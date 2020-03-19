@@ -41,11 +41,20 @@ class DynamicFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Timber.i("fragment onCreate Called")
+
+        // access Activity View Model
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         Timber.i("fragment onActivityCreated Called")
+
+        // if need to call activity (until finished) >> because fragment async
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // if initialize UI from activity after onCreateView
     }
 
     override fun onPause() {

@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // create Fragment
 
         savedInstanceState?.let {
             counter = it.getInt(KEY_COUNTER)
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         onCounterClicked()
 
         goToActivity()
+
+        // instantiate view model
     }
 
     private fun goToActivity() {

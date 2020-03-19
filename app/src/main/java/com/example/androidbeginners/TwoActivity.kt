@@ -22,8 +22,9 @@ class TwoActivity : AppCompatActivity() {
 
     private fun switchFragmentClick() {
         switchFragmentButton.setOnClickListener {
+            fragmentManager
             supportFragmentManager.beginTransaction()
-                .add(R.id.fragmentHost, DynamicFragment())
+                .add(R.id.fragmentHost, DynamicFragment(), "")
                 .commit()
         }
     }
