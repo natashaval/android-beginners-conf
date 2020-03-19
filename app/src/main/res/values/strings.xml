@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AndroidBeginners</string>
+    <string name="count">Count</string>
+    <string name="counter_increase">Counter: %1$d</string>
+    <string name="counter_default">Counter: 0</string>
+    <string name="go_to_activity_2">Go To Activity 2</string>
+
+    <string name="fragment_default">Fragment Default</string>
+    <string name="fragment_dynamic">Fragment Dynamic</string>
+
+</resources>
