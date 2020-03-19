@@ -7,10 +7,16 @@
 
     <string name="fragment_default">Fragment Default</string>
     <string name="fragment_dynamic">Fragment Dynamic</string>
+
+    <string name="product_brand">Brand: %1$s</string>
+    <string name="product_ulasan">%1$d ulasan </string>
     <string name="seller_name">Blibli.com</string>
     <string name="seller_nilai">Penilaian %1$d/100</string>
     <string name="seller_kota">Kota %1$s</string>
 
     <string name="blibli_reward">%1$d points</string>
     <string name="blibli_info"><u>Info</u></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
