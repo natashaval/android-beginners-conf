@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.item_buy.*
 import kotlinx.android.synthetic.main.item_reward.*
@@ -66,10 +66,20 @@ class DetailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setProductDetail()
         onJumlahClicked()
+        onRewardInfoClicked()
+    }
+
+    private fun onRewardInfoClicked() {
+        reward_info_text.setOnClickListener {
+            val infoDialog = AlertDialog.Builder(activity!!)
+            infoDialog.setTitle("Informasi Poin")
+                .setMessage("Nilai poin yang tertera berlaku untuk transaksi dengan harga normal. Jika ada promo, nilai poin akan disesuaikan dengan harga promo yang berlaku")
+                .show()
+        }
     }
 
     private fun setProductDetail() {
