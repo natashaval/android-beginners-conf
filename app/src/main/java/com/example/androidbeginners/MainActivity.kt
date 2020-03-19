@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_tab.*
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -34,6 +35,17 @@ class MainActivity : AppCompatActivity() {
         activity2Button.setOnClickListener {
             val intent = Intent(this, TwoActivity::class.java)
             intent.putExtra(KEY_COUNTER, counter)
+            startActivity(intent)
+        }
+
+        product_button.setOnClickListener {
+            val intent = Intent(this, ProductActivity::class.java)
+            intent.putExtra(KEY_COUNTER, counter)
+            startActivity(intent)
+        }
+
+        tab_button.setOnClickListener {
+            val intent = Intent(this, TabActivity::class.java)
             startActivity(intent)
         }
     }

@@ -6,15 +6,24 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_product.*
+import timber.log.Timber
 
 class ProductActivity : AppCompatActivity() {
 
+    private var counter: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setUpFragment()
         setContentView(R.layout.activity_product)
 
         onBuyClicked()
+
+        Timber.d("product extra %b", intent.hasExtra(KEY_COUNTER))
+        if (intent.hasExtra(KEY_COUNTER)) {
+            counter = intent.getIntExtra(KEY_COUNTER, -1)
+        }
+        Timber.d("product counter %d", counter)
+
         setUpFragment()
     }
 
@@ -35,8 +44,9 @@ class ProductActivity : AppCompatActivity() {
     }
 
     private fun setUpFragment() {
+        Timber.d("product %d", counter)
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentBli, DetailFragment.newInstance("", ""))
+            .replace(R.id.fragmentBli, DetailFragment.newInstance(counter, ""))
             .commit()
     }
 }
