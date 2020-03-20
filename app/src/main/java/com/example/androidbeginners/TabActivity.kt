@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_tab.*
+import timber.log.Timber
 
 class TabActivity : AppCompatActivity() {
 
@@ -11,6 +12,7 @@ class TabActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tab)
 
+        Timber.d("personArray in TabActivity: $personArray")
         setUpTabLayout()
     }
 
@@ -20,10 +22,11 @@ class TabActivity : AppCompatActivity() {
         tab_layout.tabGravity = TabLayout.GRAVITY_FILL
 
         val adapter = TabAdapter(supportFragmentManager, tab_layout.tabCount)
-        adapter.addFragment(ListFragment.newInstance(), "List Fragment")
+        adapter.addFragment(ListFragment.newInstance(personArray), "List Fragment")
         adapter.addFragment(RecyclerFragment.newInstance(), "Recycler Fragment")
         view_pager_layout.adapter = adapter
 
         tab_layout.setupWithViewPager(view_pager_layout)
+//        tab_layout.addOnTabSelectedListener()
     }
 }

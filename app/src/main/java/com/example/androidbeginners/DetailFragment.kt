@@ -1,6 +1,8 @@
 package com.example.androidbeginners
 
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -44,6 +46,7 @@ class DetailFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
         Timber.d("param1 %d", param1)
+        Timber.i("fragment onCreate called")
     }
 
     private fun onJumlahClicked() {
@@ -65,6 +68,7 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        Timber.i("fragment onCreateView called")
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
@@ -73,6 +77,7 @@ class DetailFragment : Fragment() {
         setProductDetail()
         onJumlahClicked()
         onRewardInfoClicked()
+        onShareClicked()
     }
 
     private fun onRewardInfoClicked() {
@@ -81,6 +86,19 @@ class DetailFragment : Fragment() {
             infoDialog.setTitle("Informasi Poin")
                 .setMessage("Nilai poin yang tertera berlaku untuk transaksi dengan harga normal. Jika ada promo, nilai poin akan disesuaikan dengan harga promo yang berlaku")
                 .show()
+        }
+    }
+
+    private fun onShareClicked() {
+        share_button.setOnClickListener {
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, productName)
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, "Hahaha")
+            startActivity(shareIntent)
         }
     }
 
@@ -106,5 +124,54 @@ class DetailFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+//    Lifecycle Fragment
+
+    override fun onStart() {
+        super.onStart()
+        Timber.i("fragment onStart Called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.i("fragment onResume Called")
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Timber.i("fragment onAttach Called")
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        Timber.i("fragment onActivityCreated Called")
+
+        // if need to call activity (until finished) >> because fragment async
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Timber.i("fragment onPause Called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Timber.i("fragment onStop Called")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Timber.i("fragment onDestroyView Called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.i("fragment onDestroy Called")
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        Timber.i("fragment onDetach Called")
     }
 }

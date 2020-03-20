@@ -1,11 +1,13 @@
 package com.example.androidbeginners
 
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_product.*
+import kotlinx.android.synthetic.main.fragment_detail.*
 import timber.log.Timber
 
 class ProductActivity : AppCompatActivity() {
@@ -15,8 +17,7 @@ class ProductActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
-
-        onBuyClicked()
+        Timber.i("product onCreate called")
 
         Timber.d("product extra %b", intent.hasExtra(KEY_COUNTER))
         if (intent.hasExtra(KEY_COUNTER)) {
@@ -25,6 +26,7 @@ class ProductActivity : AppCompatActivity() {
         Timber.d("product counter %d", counter)
 
         setUpFragment()
+        onBuyClicked()
     }
 
     private fun onBuyClicked() {
@@ -46,7 +48,32 @@ class ProductActivity : AppCompatActivity() {
     private fun setUpFragment() {
         Timber.d("product %d", counter)
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentBli, DetailFragment.newInstance(counter, ""))
+            .replace(R.id.frame_layout, DetailFragment.newInstance(counter, ""), "DetailFragment")
             .commit()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Timber.i("product onStart called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.i("product onResume called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Timber.i("product onPause called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Timber.i("product onStop called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.i("product onDestroy called")
     }
 }

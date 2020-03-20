@@ -11,11 +11,10 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <fragment
-            android:id="@+id/fragmentBli"
-            android:name="com.example.androidbeginners.DefaultFragment"
+        <FrameLayout
+            android:id="@+id/frame_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
     </ScrollView>
 
@@ -29,7 +28,7 @@
             android:id="@+id/buy_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.60"
+            android:layout_weight="0.6"
             android:backgroundTint="@android:color/holo_orange_light"
             android:padding="2dp"
             android:text="Beli Sekarang"
@@ -39,7 +38,7 @@
             android:id="@+id/cart_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.40"
+            android:layout_weight="0.4"
             android:backgroundTint="@android:color/holo_blue_light"
             android:drawableLeft="@drawable/ic_shopping_cart_black_24dp"
             android:padding="2dp"
