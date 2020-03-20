@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_list.*
 import kotlinx.android.synthetic.main.item_person.*
 import timber.log.Timber
@@ -44,6 +45,9 @@ class ListFragment : Fragment() {
 //            val adapter = ArrayAdapter(activity!!, R.layout.item_person, R.id.person_text, it)
             val adapter = NameArrayAdapter(activity!!, it)
             list_view_layout.adapter = adapter
+            list_view_layout.setOnItemClickListener { parent, view, position, id ->
+                Toast.makeText(activity, "List Item clicked: ${it[position]}", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

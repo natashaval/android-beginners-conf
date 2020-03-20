@@ -23,7 +23,7 @@ class TabActivity : AppCompatActivity() {
 
         val adapter = TabAdapter(supportFragmentManager, tab_layout.tabCount)
         adapter.addFragment(ListFragment.newInstance(personArray), "List Fragment")
-        adapter.addFragment(RecyclerFragment.newInstance(), "Recycler Fragment")
+        adapter.addFragment(RecyclerFragment.newInstance(personArray), "Recycler Fragment")
         view_pager_layout.adapter = adapter
 
         tab_layout.setupWithViewPager(view_pager_layout)
