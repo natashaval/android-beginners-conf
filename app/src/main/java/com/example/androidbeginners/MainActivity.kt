@@ -3,6 +3,7 @@ package com.example.androidbeginners
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_mail.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_tab.*
 import timber.log.Timber
@@ -46,6 +47,11 @@ class MainActivity : AppCompatActivity() {
 
         tab_button.setOnClickListener {
             val intent = Intent(this, TabActivity::class.java)
+            startActivity(intent)
+        }
+
+        send_mail_button.setOnClickListener {
+            val intent = Intent(this, MailActivity::class.java)
             startActivity(intent)
         }
     }
